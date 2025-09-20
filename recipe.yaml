@@ -12,6 +12,8 @@ build:
     meson setup _build
     meson compile -C _build
     DESTDIR=$PREFIX meson install -C _build
+    mv $PREFIX/usr/* $PREFIX/
+    rm -r $PREFIX/usr/
 
 requirements:
   build: 
