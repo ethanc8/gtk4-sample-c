@@ -11,26 +11,27 @@ build:
   script: | 
     meson setup _build
     meson compile -C _build
-    DESTDIR=$PREFIX meson install -C _build
-    mv $PREFIX/usr/* $PREFIX/
-    rm -r $PREFIX/usr/
+    mkdir -p ./destdir
+    DESTDIR="$PWD/destdir" meson install -C _build
+    cp -r ./destdir/usr/local/* $PREFIX/
 
 requirements:
   build: 
     - ${{ compiler('c') }}
-    - meson
-    - ninja
+    - meson >=1.9.0,<2
+    - ninja >=1.13.1,<2
   host: 
-    - gtk4
-    - glib
-    - glib-tools
-    - gobject-introspection
-    - zlib
-    - expat
-    - xorg-xproto
-    - xorg-kbproto
-    - xorg-xextproto
-    - xorg-renderproto
+    - gtk4 >=4.14.1,<5
+    - glib >=2.86.0,<3
+    - glib-tools >=2.86.0,<3
+    - gobject-introspection >=1.84.0,<2
+    - zlib >=1.3.1,<2
+    - expat >=2.7.1,<3
+    - adwaita-icon-theme >=48.1,<49
+    - xorg-xproto >=7.0.31,<8
+    - xorg-kbproto >=1.0.7,<2
+    - xorg-xextproto >=7.3.0,<8
+    - xorg-renderproto >=0.11.1,<0.12
   run:
     - gtk4
 
