@@ -1,0 +1,34 @@
+package:
+  name: gtk4-sample-c
+  version: 0.1.0
+
+source:
+  path: .
+  use_gitignore: true 
+
+build:
+  number: 0
+  script: | 
+    meson setup _build
+    meson compile -C _build
+    DESTDIR=$PREFIX meson install -C _build
+
+requirements:
+  build: 
+    - ${{ compiler('c') }}
+    - meson
+    - ninja
+  host: 
+    - gtk4
+    - glib
+    - glib-tools
+    - gobject-introspection
+    - zlib
+    - expat
+    - xorg-xproto
+    - xorg-kbproto
+    - xorg-xextproto
+    - xorg-renderproto
+  run:
+    - gtk4
+

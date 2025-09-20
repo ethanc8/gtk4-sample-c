@@ -1,0 +1,6 @@
+# pixi environments
+.pixi
+
+# Build outputs
+_build
+*.conda
