@@ -1,0 +1,8 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
+data/io.github.ethanc8.gtk4sample.desktop.in
+data/io.github.ethanc8.gtk4sample.metainfo.xml.in
+data/io.github.ethanc8.gtk4sample.gschema.xml
+src/main.c
+src/gtk4-sample-c-window.c
+src/gtk4-sample-c-window.ui

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gtk4-sample-c">
+	<schema id="io.github.ethanc8.gtk4sample" path="/io/github/ethanc8/gtk4sample/">
+	</schema>
+</schemalist>

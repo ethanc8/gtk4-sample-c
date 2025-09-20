@@ -1,0 +1,3 @@
+[D-BUS Service]
+Name=io.github.ethanc8.gtk4sample
+Exec=@bindir@/gtk4-sample-c --gapplication-service

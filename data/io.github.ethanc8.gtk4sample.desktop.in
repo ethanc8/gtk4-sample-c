@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=gtk4-sample-c
+Exec=gtk4-sample-c
+Icon=io.github.ethanc8.gtk4sample
+Terminal=false
+Type=Application
+Categories=Utility;
+Keywords=GTK;
+StartupNotify=true
+DBusActivatable=true
