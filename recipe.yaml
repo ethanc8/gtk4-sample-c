@@ -32,6 +32,4 @@ requirements:
     - xorg-kbproto >=1.0.7,<2
     - xorg-xextproto >=7.3.0,<8
     - xorg-renderproto >=0.11.1,<0.12
-  run:
-    - gtk4
 
