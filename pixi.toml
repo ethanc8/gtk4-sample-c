@@ -13,6 +13,10 @@ run = "_build/src/gtk4-sample-c"
 clean = "rm -rf _build"
 
 package = "pixi build --no-incremental"
+get-appimage-deps = "wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-$(uname -m).AppImage && wget https://github.com/AppImage/type2-runtime/releases/download/continuous/runtime-$(uname -m)"
+build-appdir = "pixi install -e appdir; ln -s .. .pixi/envs/appdir/usr"
+build-appimage = "./appimagetool-x86_64.AppImage .pixi/envs/appdir --runtime-file runtime-x86_64"
+run-appimage = "gtk4-sample-c-x86_64.AppImage"
 
 [dependencies]
 c-compiler = "*"
@@ -31,6 +35,8 @@ xorg-xproto = ">=7.0.31,<8"
 xorg-kbproto = ">=1.0.7,<2"
 xorg-xextproto = ">=7.3.0,<8"
 xorg-renderproto = ">=0.11.1,<0.12"
+librsvg = ">=2.58.4,<3"
+wget = ">=1.21.4,<2"
 
 [package]
 name = "gtk4-sample-c"
@@ -45,5 +51,10 @@ gtk4-sample-c = { path = "." }
 [feature.conda.tasks]
 run-package = "gtk4-sample-c"
 
+[feature.appdir.dependencies]
+gtk4-sample-c = { path = "." }
+adwaita-icon-theme = ">=48.1,<49"
+
 [environments]
 conda = ["conda"]
+appdir = ["appdir"]

@@ -4,3 +4,6 @@
 # Build outputs
 _build
 *.conda
+
+*.AppImage
+runtime-*

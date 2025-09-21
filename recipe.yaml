@@ -7,7 +7,7 @@ source:
   use_gitignore: true 
 
 build:
-  number: 0
+  number: 1
   script: | 
     meson setup _build
     meson compile -C _build
@@ -15,11 +15,28 @@ build:
     DESTDIR="$PWD/destdir" meson install -C _build
     cp -r ./destdir/usr/local/* $PREFIX/
 
+    # AppDir
+    # symlinks seem to have very bad problems...
+    # # The if statements are needed to allow incremental builds.
+    # if [[ -L $PREFIX/usr ]]; then unlink $PREFIX/usr; fi
+    # if [[ -d $PREFIX/usr ]]; then rm -r $PREFIX/usr; fi
+    # if [[ ! -e $PREFIX/usr ]]; then ln -s .. $PREFIX/usr; fi
+
+    cp packaging-data/AppRun $PREFIX
+    cp packaging-data/activate.sh $PREFIX
+
+    cp $PREFIX/share/icons/hicolor/scalable/apps/io.github.ethanc8.gtk4sample.svg $PREFIX/
+    rsvg-convert $PREFIX/io.github.ethanc8.gtk4sample.svg --width=256 --height=256 > $PREFIX/.DirIcon
+
+    cp $PREFIX/share/applications/io.github.ethanc8.gtk4sample.desktop $PREFIX/
+
+
 requirements:
   build: 
     - ${{ compiler('c') }}
     - meson >=1.9.0,<2
     - ninja >=1.13.1,<2
+    - librsvg >=2.58.4,<3
   host: 
     - gtk4 >=4.14.1,<5
     - glib >=2.86.0,<3
